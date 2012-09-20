@@ -1,0 +1,14 @@
+#!/bin/sh
+
+(
+  cd
+
+  # Add a hook to reset on push. This doesn't work.
+  printf '#!/bin/sh\n\n' > .git/hooks/post-update
+  printf '(\n  cd /home\n  git checkout master && git reset --hard\n)\n' \
+    > .git/hooks/post-update
+  chmod +x .git/hooks/post-update
+
+  # Ignore the warning about current branch. This works.
+  printf '[receive]\n\tdenyCurrentBranch = ignore\n' > .git/config
+)
