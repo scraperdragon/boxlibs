@@ -1,5 +1,12 @@
 import json
 
+"""Allows easy stting of the box's json file:
+
+import boxjson
+swjson=boxjson.boxjson()
+
+and then treat swjson as a list of dictionaries, etc."""
+
 jsonfile='/home/scraperwiki.json'
 
 def getjson():
