@@ -13,6 +13,13 @@ def savejson(data):
     fh.close()
 
 class boxjson():
+    def __init__(self, *args):
+        if len(args)>0:
+            jsonfile=args[0]
+
+    def __str__(self):
+        return str(getjson())
+    
     def parse(self, *args):
         if len(args)==1:
             return getjson()[args[0]]
