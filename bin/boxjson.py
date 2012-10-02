@@ -1,11 +1,18 @@
 import json
+import datetime
 
 """Allows easy stting of the box's json file:
 
 import boxjson
-swjson=boxjson.boxjson()
+print boxjson.boxjson['status_message']
 
-and then treat swjson as a list of dictionaries, etc."""
+or
+
+from boxjson import boxjson
+print boxjson['status_message']
+
+(but you use the message() function)
+"""
 
 jsonfile='/home/scraperwiki.json'
 
@@ -18,6 +25,16 @@ def savejson(data):
     fh=open(jsonfile, 'w')
     fh.write(str_data)
     fh.close()
+
+def message(msg=None, timestamp=True):
+    if timestamp:
+        time=datetime.datetime.now().isoformat()[:16]
+    else:
+        time=''
+    if msg:
+        boxjson()['status_message']=str(time)+' '+str(msg)
+    else:
+        return boxjson()['status_message']
 
 class boxjson():
     def __init__(self, *args):
@@ -40,3 +57,4 @@ class boxjson():
     def __getattr__(self, *args, **kwargs):
         return self.parse
 
+boxjson = boxjson()
