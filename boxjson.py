@@ -57,4 +57,3 @@ class boxjson():
     def __getattr__(self, *args, **kwargs):
         return self.parse
 
-boxjson = boxjson()

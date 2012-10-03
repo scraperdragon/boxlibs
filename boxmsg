@@ -1,0 +1,8 @@
+#!/usr/bin/env python
+from boxlibs import boxjson
+import sys
+s = ' '.join(sys.argv[1:])
+if s:
+    boxjson.message(s)
+else:
+    print boxjson.message()
